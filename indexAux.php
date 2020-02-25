@@ -3,10 +3,31 @@
 if (isset($_POST['MovieNro']) and isset($_POST['Genero'])) {
     $MovieNro = $_POST['MovieNro'];
     $Gender = $_POST['Genero'];
-    DisplayCardMovies($MovieNro, 5, $Gender);
+    $Letters = Determine_Search_Variable();
+    DisplayCardMovies($MovieNro, 5, $Gender, $Letters);
     $_POST['MovieNro'] = null;
     $_POST['Genero'] = null;
 }
+
+function Determine_Search_Variable()
+{
+    if (isset($_POST['Search'])) {
+        return $_POST['Search'];
+    } else {
+        return null;
+    }
+}
+/*
+if (isset($_POST['Search']) and isset($_POST['MovieNro']) and isset($_POST['Genero'])) {
+$Letters = $_POST['Search'];
+$MovieNro = $_POST['MovieNro'];
+$Gender = $_POST['Genero'];
+DisplayCardMovies($MovieNro, 5, $Gender, $Letters);
+$_POST['MovieNro'] = null;
+$_POST['Genero'] = null;
+$_POST['Search'] = null;
+}
+ */
 
 function CreateMovieCard($titulo, $genero, $puntuacion)
 {
@@ -18,22 +39,25 @@ function CreateMovieCard($titulo, $genero, $puntuacion)
       </div>";
 }
 
-function Get_Partial_Movie_Info($startRow, $Amount, $gender)
+function Get_Partial_Movie_Info($startRow, $Amount, $gender, $Letters)
 {
+    if ($Letters == null) {
+        $Letters = '';
+    }
     if ($gender != "Cualquiera") {
         $Gender_ID = Get_ID_Of_Gender($gender);
-        $sql = 'SELECT titulo,id_genero,puntuacion FROM peliculas WHERE id_genero = ' . $Gender_ID . ' ORDER BY fecha_lanzamiento DESC LIMIT ' . $startRow . ',' . $Amount;
+        $sql = "SELECT titulo,id_genero,puntuacion FROM peliculas WHERE id_genero = " . $Gender_ID . " AND titulo LIKE '%" . $Letters . "%' ORDER BY fecha_lanzamiento DESC LIMIT " . $startRow . "," . $Amount;
     } else {
-        $sql = 'SELECT titulo,id_genero,puntuacion FROM peliculas ORDER BY fecha_lanzamiento DESC LIMIT ' . $startRow . ',' . $Amount;
+        $sql = "SELECT titulo,id_genero,puntuacion FROM peliculas WHERE titulo LIKE '%" . $Letters . "%' ORDER BY fecha_lanzamiento DESC LIMIT " . $startRow . "," . $Amount;
     }
     $resultList = DataBasePetition($sql);
     return $resultList;
 }
 
 //html
-function DisplayCardMovies($startRow, $Amount, $gender)
+function DisplayCardMovies($startRow, $Amount, $gender, $Letters)
 {
-    $movies = Get_Partial_Movie_Info($startRow, $Amount, $gender);
+    $movies = Get_Partial_Movie_Info($startRow, $Amount, $gender, $Letters);
     for ($i = 0; $i < count($movies); $i++) {
         $movie = $movies[$i];
         $title = $movie['titulo'];
@@ -82,7 +106,7 @@ function DataBasePetition($sql)
         $connectionDB = null;
         return $retorno;
     } else {
-        echo 'La linea de sql no trajo nada de la base de datos! ' . $resultado;
+        echo 'La linea de sql no trajo nada de la base de datos! peticion: ' . $sql;
     }
 }
 

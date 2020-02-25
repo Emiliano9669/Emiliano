@@ -19,16 +19,39 @@ function GetMovies() {
     success: function(response) {
       if (response != "") {
         $("main").html(response);
-      } else {
-        alert("No existen mas películas en el catálogo");
       }
     }
   });
 }
 
+$("#Buscador").keyup(function() {
+  var searchBoxValue = $(this).val();
+  console.log("se tecleo en el buscador: " + searchBoxValue);
+  var parametros = {
+    Genero: $("select").val(),
+    MovieNro: MovieIndex,
+    Search: searchBoxValue
+  };
+  $.ajax({
+    data: parametros,
+    url: "indexAux.php",
+    type: "post",
+    success: function(response) {
+      if (response != "") {
+        $("main").html(response);
+      }
+    }
+  });
+});
+
 $("#Next").click(function() {
   console.log("Next was clicked");
   $("#Back").show();
+});
+
+$("#Back").click(function() {
+  console.log("Back was clicked");
+  Check_IfNeedTo_Hide_BackButton();
 });
 
 function Check_IfNeedTo_Hide_BackButton() {
@@ -36,8 +59,3 @@ function Check_IfNeedTo_Hide_BackButton() {
     $("#Back").hide();
   }
 }
-
-$("#Back").click(function() {
-  console.log("Back was clicked");
-  Check_IfNeedTo_Hide_BackButton();
-});

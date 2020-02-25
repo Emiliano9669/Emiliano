@@ -21,7 +21,7 @@ require 'indexAux.php'
       </div>
     </header>
     <div id='filtros'>
-      <input type='search' placeholder='Ingresa una película...' />
+      <input type='search' id='Buscador' placeholder='Ingresa una película...' />
       <div id='genero'>
       <p>Género:</p><?php
 MakeGenderSelection();
@@ -30,7 +30,7 @@ MakeGenderSelection();
     </div>
     <main>
       <?php
-DisplayCardMovies('0', '5', 'Cualquiera');
+DisplayCardMovies('0', '5', 'Cualquiera', '');
 ?>
     </main>
     <div class='nextBack'>
