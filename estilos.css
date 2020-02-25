@@ -1,0 +1,107 @@
+html,
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+p {
+  margin: 0px;
+}
+
+#Titulo {
+  margin-left: 50%;
+  margin-right: 50%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#flujoUsuario {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10%;
+}
+
+#flujoUsuario a {
+  margin: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+#flujoUsuario a:hover {
+  color: firebrick;
+}
+
+#filtros {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10%;
+  align-items: center;
+}
+
+#filtros #genero {
+  display: flex;
+  align-items: center;
+}
+
+#filtros input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+  width: 25%;
+}
+
+#filtros select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+#genero p {
+  margin: 50px 50px;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+main {
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 95%;
+  height: 500px;
+  margin: 80px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
+.pelicula {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 220px;
+  height: 450px;
+  align-items: center;
+}
+
+.pelicula img {
+  height: 75%;
+}
+
+.nextBack {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 5px;
+  margin: 0px 5px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: crimson;
+}

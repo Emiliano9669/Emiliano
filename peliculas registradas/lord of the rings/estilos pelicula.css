@@ -1,0 +1,167 @@
+html,
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+p {
+  margin: 0px;
+}
+
+main {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+header,
+main {
+  border: 1px solid black;
+}
+
+header {
+  height: 50px;
+}
+
+.poster {
+  width: 33%;
+  height: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.poster img {
+  width: 90%;
+  height: 70%;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.infopeli {
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  width: 50%;
+}
+
+.infopeli .resumen {
+  height: 80%;
+  width: 100%;
+}
+
+/*empieza la seccion video*/
+.video {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+  height: fit-content;
+  margin: 0 auto;
+}
+
+.video iframe {
+  margin: 20px;
+}
+
+/** Seccion de comentarios **/
+
+.opiniones {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  height: 350px;
+  margin: 0 auto;
+}
+
+#botonOpinar {
+  width: 10%;
+  margin-left: 2%;
+  background-color: blueviolet;
+  color: aliceblue;
+}
+
+#botonOpinar:hover {
+  background-color: black;
+}
+
+.comentarios {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.globoComentario {
+  width: 15%;
+  border: 2px yellowgreen solid;
+  border-radius: 10px;
+  border-top-left-radius: 0px;
+  height: 200px;
+}
+
+blockquote {
+  margin: 0;
+  padding: 0;
+  height: 80%;
+}
+
+.globoComentario p {
+  margin: 0 auto;
+}
+
+button {
+  margin: 10px;
+  padding: 10px;
+  background-color: cadetblue;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: coral;
+}
+
+.botones {
+  margin: 10px auto;
+}
+
+/**seccion opinar **/
+.opinar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.opinar button {
+  width: 200px;
+  margin: 15px auto;
+  background-color: blanchedalmond;
+  color: black;
+}
+
+.opinar button:hover {
+  background-color: black;
+  color: white;
+}
+
+/**boton admin ver pendientes de aprobacion **/
+.admin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.admin button {
+  background-color: black;
+  color: white;
+}
+
+.admin button:hover {
+  background-color: white;
+  color: black;
+}
