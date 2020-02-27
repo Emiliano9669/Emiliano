@@ -3,6 +3,11 @@
 require 'indexAux.php'
 ?>
 
+<?php
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang='en'>
   <head>
@@ -15,10 +20,9 @@ require 'indexAux.php'
   </head>
   <body>
       <h1 id='Titulo'>Cine</h1>
-      <div id='flujoUsuario'>
-        <a href="/flujo usuario/login.php">Ingresar</a>
-        <a href="/flujo usuario/registro.php">Registro</a>
-      </div>
+      <?php
+MakeUserLogging();
+?>
     </header>
     <div id='filtros'>
       <input type='search' id='Buscador' placeholder='Ingresa una película...' />
@@ -33,6 +37,13 @@ MakeGenderSelection();
 DisplayCardMovies('0', '5', 'Cualquiera', '');
 ?>
     </main>
+    <?php
+$email = 'admin@guia.com';
+$password = '21232f297a57a5a743894a0e4a801fc3';
+$sql = "SELECT * FROM usuarios WHERE email = '" . $email . "' AND password = '" . $password . "'";
+$resultado = DataBasePetition($sql);
+print_r($resultado);
+?>
     <div class='nextBack'>
       <button id="Back" onclick="MovieIndex-=5;GetMovies();">Back</button>
       <button id="Next" onclick="MovieIndex+=5;GetMovies();">Next</button>

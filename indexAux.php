@@ -1,4 +1,5 @@
 <?php
+require 'DataBase.php';
 
 if (isset($_POST['MovieNro']) and isset($_POST['Genero'])) {
     $MovieNro = $_POST['MovieNro'];
@@ -17,17 +18,6 @@ function Determine_Search_Variable()
         return null;
     }
 }
-/*
-if (isset($_POST['Search']) and isset($_POST['MovieNro']) and isset($_POST['Genero'])) {
-$Letters = $_POST['Search'];
-$MovieNro = $_POST['MovieNro'];
-$Gender = $_POST['Genero'];
-DisplayCardMovies($MovieNro, 5, $Gender, $Letters);
-$_POST['MovieNro'] = null;
-$_POST['Genero'] = null;
-$_POST['Search'] = null;
-}
- */
 
 function CreateMovieCard($titulo, $genero, $puntuacion)
 {
@@ -97,25 +87,20 @@ function Get_ID_Of_Gender($gender)
     }
 }
 
-function DataBasePetition($sql)
+function MakeUserLogging()
 {
-    $connectionDB = new PDO('mysql:host=localhost; dbname=cine', 'root', '1032');
-    $resultado = $connectionDB->query($sql);
-    if ($resultado) {
-        $retorno = $resultado->fetchAll(PDO::FETCH_ASSOC);
-        $connectionDB = null;
-        return $retorno;
+    if (isset($_SESSION["loggedUser"])) {
+        $alias = $_SESSION["loggedUser"]["alias"];
+        echo '<div class="centrar marginLeft">
+        <p > Bienvenido ' . $alias . '</p>
+        <button id="Salir"> Salir </button>
+        </div>';
     } else {
-        echo 'La linea de sql no trajo nada de la base de datos! peticion: ' . $sql;
+        echo '
+        <div id="flujoUsuario">
+        <a href="usuario\login\login.php">Ingresar</a>
+        <a href="usuario/register/registro.php">Registro</a>
+      </div>
+      ';
     }
-}
-
-function BaseDatos()
-{
-    $connectionDB = new PDO('mysql:host=localhost; dbname=cine', 'root', '1032');
-    $sql = "SELECT nombre FROM generos ORDER BY nombre";
-    $resultado = $connectionDB->query($sql);
-    $generos = $resultado->fetchAll(PDO::FETCH_ASSOC);
-    echo $generos[1]['nombre'];
-    $connectionDB = null;
 }

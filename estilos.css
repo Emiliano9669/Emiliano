@@ -8,6 +8,14 @@ p {
   margin: 0px;
 }
 
+.centrar {
+  text-align: center;
+}
+
+.marginLeft {
+  margin-left: 70%;
+}
+
 #Titulo {
   margin-left: 50%;
   margin-right: 50%;

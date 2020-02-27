@@ -45,13 +45,24 @@ $("#Buscador").keyup(function() {
 });
 
 $("#Next").click(function() {
-  console.log("Next was clicked");
   $("#Back").show();
 });
 
 $("#Back").click(function() {
-  console.log("Back was clicked");
   Check_IfNeedTo_Hide_BackButton();
+});
+
+$("#Salir").click(function() {
+  $.ajax({
+    url: "Salir.php",
+    success: function() {
+      var url = "index.php";
+      $(location).prop("href", url);
+    },
+    error: function() {
+      console.log("se ha producido un error");
+    }
+  });
 });
 
 function Check_IfNeedTo_Hide_BackButton() {
