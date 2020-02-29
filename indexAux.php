@@ -10,6 +10,16 @@ if (isset($_POST['MovieNro']) and isset($_POST['Genero'])) {
     $_POST['Genero'] = null;
 }
 
+if (isset($_POST['MovieName'])) {
+    $movieName = $_POST['MovieName'];
+    $sql = "SELECT id FROM peliculas WHERE titulo = '" . $movieName . "'";
+    $result = DataBasePetition($sql);
+    $id = intval($result[0]['id']);
+    $GLOBALS['MovieId'] = $id;
+    $_POST['MovieName'] = null;
+    echo '.';
+}
+
 function Determine_Search_Variable()
 {
     if (isset($_POST['Search'])) {

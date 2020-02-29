@@ -90,6 +90,7 @@ main {
   width: 220px;
   height: 450px;
   align-items: center;
+  padding: 15px;
 }
 
 .pelicula img {
