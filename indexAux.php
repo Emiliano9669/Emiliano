@@ -11,12 +11,15 @@ if (isset($_POST['MovieNro']) and isset($_POST['Genero'])) {
 }
 
 if (isset($_POST['MovieName'])) {
+    session_start();
     $movieName = $_POST['MovieName'];
     $sql = "SELECT id FROM peliculas WHERE titulo = '" . $movieName . "'";
     $result = DataBasePetition($sql);
-    $id = intval($result[0]['id']);
-    $GLOBALS['MovieId'] = $id;
-    $_POST['MovieName'] = null;
+    $MovieId = array(intval($result[0]['id']));
+    $MI = array(
+        "id" => $MovieId,
+    );
+    $_SESSION["MovieId"] = $MI;
     echo '.';
 }
 
@@ -102,7 +105,7 @@ function MakeUserLogging()
     if (isset($_SESSION["loggedUser"])) {
         $alias = $_SESSION["loggedUser"]["alias"];
         echo '<div class="centrar marginLeft">
-        <p > Bienvenido ' . $alias . '</p>
+        <p> Bienvenido ' . $alias . '</p>
         <button id="Salir"> Salir </button>
         </div>';
     } else {

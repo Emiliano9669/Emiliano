@@ -1,5 +1,6 @@
 <?php
 require_once '../DataBase.php';
+session_start();
 
 function ShowMovieTitile()
 {
@@ -88,7 +89,6 @@ function ShowGloboComment($comment, $score, $releaseDate)
     $comment = "Comentario de la persona sobre la peli";
     $score = "x";
     $releaseDate = "dd/mm/yyyy";
-
     echo '<div class="globoComentario">
     <blockquote>' .
         $comment . '
@@ -100,5 +100,6 @@ function ShowGloboComment($comment, $score, $releaseDate)
 
 function GetGlobalMovieId()
 {
-    return $GLOBALS['MovieId'];
+
+    return $_SESSION['MovieId']['id'][0];
 }

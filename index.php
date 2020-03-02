@@ -1,11 +1,13 @@
 
 <?php
+session_start();
+echo session_id();
+?>
+<?php
 require 'indexAux.php'
 ?>
 
-<?php
-session_start();
-?>
+
 
 
 <!DOCTYPE html>

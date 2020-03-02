@@ -1,5 +1,6 @@
 <?php
 require_once 'peliculaAux.php';
+
 ?>
 
 <!DOCTYPE html>
