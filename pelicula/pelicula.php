@@ -10,6 +10,7 @@ require_once 'peliculaAux.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="estilos pelicula.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>inserte nombre de peli</title>
   </head>
   <body>
@@ -45,26 +46,18 @@ ShowIframe();
       <h3>Opiniones</h3>
       <div class="comentarios">
         <?php
-ShowGloboComment('x', 'x', 'x');
+DisplayGloboComments(0, 5);
 ?>
       </div>
       <div class="botones">
-        <button>Anterior</button>
-        <button>Siguiente</button>
+        <button id="Back" onclick="GetCommentaries('Back')">Anterior</button>
+        <button id="Next" onclick="GetCommentaries('Next')">Siguiente</button>
       </div>
     </div>
     <!-- se termina la clase opiniones-->
-    <div class="admin">
-      <button style="margin: 10px auto;">
-        Ver comentarios pendientes de aprobacion (admin)
-      </button>
-    </div>
-    <div class="opinar">
-      <p style="color:red;">
-        Esta es la seccion para opinar si un usuario esta registrado
-      </p>
-      <textarea name="" id="" cols="30" rows="10"></textarea>
-      <button>enviar opinion (usuario)</button>
-    </div>
+    <?php
+Show_comment_writer();
+?>
   </body>
+  <script src="pelicula.js"></script>
 </html>

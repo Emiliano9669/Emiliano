@@ -74,7 +74,12 @@ header {
   flex-direction: column;
   width: 95%;
   height: 350px;
-  margin: 0 auto;
+  margin: 50px auto;
+}
+
+.opiniones h3 {
+  text-align: center;
+  padding: 5px;
 }
 
 #botonOpinar {
@@ -149,21 +154,4 @@ button:hover {
 .opinar button:hover {
   background-color: black;
   color: white;
-}
-
-/**boton admin ver pendientes de aprobacion **/
-.admin {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.admin button {
-  background-color: black;
-  color: white;
-}
-
-.admin button:hover {
-  background-color: white;
-  color: black;
 }

@@ -18,10 +18,12 @@ function DeployAccountResult($account)
         $alias = $account[0]['alias'];
         $email = $account[0]['email'];
         $esAdmin = $account[0]['es_administrador'] == 1;
+        $userId = $account[0]['id'];
         $loggedUser = array(
             "esAdmin" => $esAdmin,
             "alias" => $alias,
             "email" => $email,
+            "id" => $userId,
         );
         $_SESSION["loggedUser"] = $loggedUser;
         echo "usuario logeado exitosamente";
