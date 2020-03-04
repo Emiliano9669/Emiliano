@@ -14,12 +14,16 @@ require_once 'AprobarComentariosAux.php';
   </head>
   <body>
     <div class="contenido">
-      <header>header comun en todas las paginas</header>
-      <h1>Aprobación de comentarios FALTA PONER SOLO PARA ADMINS ESTA FUNCION</h1>
-
+      <header>
+      <nav>
+      <a href="../../index.php">Volver a Inicio</a>
+      </nav>
       <?php
-Make_Movie_Selector()
+Greets();
 ?>
+      </header>
+      <h1>Aprobación de comentarios</h1>
+
       <div class="comentariosPendientes">
         <?php
 ShowPendingComments();

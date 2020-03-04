@@ -89,6 +89,18 @@ function MakeGenderSelection()
     echo '</select>';
 }
 
+function MakeAdminTools()
+{
+    if (isset($_SESSION["loggedUser"]) and $_SESSION["loggedUser"]["esAdmin"]) {
+        echo '
+        <p class="centrar fondoNegro letraRoja"> Funciones de admin </p>
+        <nav>
+        <a href="Admin/Comentarios/AprobarComentarios.php" style="text-decoration:none;" class ="fondoNegro letraRoja"> Aprobar comentarios </a>
+        <a href="Admin/AltaPelicula/RegistroPelicula.php" style="text-decoration:none;" class ="fondoNegro letraRoja"> Alta de película </a>
+        </nav>';
+    }
+}
+
 function Get_ID_Of_Gender($gender)
 {
     $sql = "SELECT * FROM generos WHERE nombre= '" . $gender . "'";

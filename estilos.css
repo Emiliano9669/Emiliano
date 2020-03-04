@@ -12,6 +12,14 @@ p {
   text-align: center;
 }
 
+.fondoNegro {
+  background-color: black;
+}
+
+.letraRoja {
+  color: red;
+}
+
 .marginLeft {
   margin-left: 70%;
 }
@@ -81,6 +89,11 @@ main {
   align-items: center;
   justify-content: space-evenly;
   padding: 20px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .pelicula {

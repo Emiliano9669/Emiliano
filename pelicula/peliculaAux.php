@@ -1,6 +1,6 @@
 <?php
-require_once '../DataBase.php';
 session_start();
+require_once '../DataBase.php';
 
 if (isset($_POST['Comment']) and isset($_POST['UserRating'])) {
     $comment = $_POST['Comment'];

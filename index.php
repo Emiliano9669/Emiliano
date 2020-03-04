@@ -23,8 +23,9 @@ require 'indexAux.php'
       <h1 id='Titulo'>Cine</h1>
       <?php
 MakeUserLogging();
+MakeAdminTools();
 ?>
-    </header>
+
     <div id='filtros'>
       <input type='search' id='Buscador' placeholder='Ingresa una película...' />
       <div id='genero'>

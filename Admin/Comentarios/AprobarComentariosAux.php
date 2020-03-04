@@ -1,6 +1,9 @@
 <?php
 
+session_start();
+
 require_once '../../DataBase.php';
+require_once '../../SessionTasks.php';
 
 if (isset($_POST['Alias']) and isset($_POST['MovieName']) and isset($_POST['Veredict'])) {
     $alias = $_POST['Alias'];
@@ -42,8 +45,18 @@ function DisapproveComment($alias, $movieName)
 
 function ShowPendingComments()
 {
-    $sql = 'SELECT * FROM comentarios  WHERE estado = "PENDIENTE"';
-    $result = DataBasePetition($sql);
+    if (isset($_SESSION["loggedUser"]) and $_SESSION["loggedUser"]["esAdmin"]) {
+        $sql = 'SELECT * FROM comentarios  WHERE estado = "PENDIENTE"';
+        $result = DataBasePetition($sql);
+        LoopComments($result);
+    } else {
+        echo 'No tienes permiso para aprobar comentarios';
+    }
+
+}
+
+function LoopComments($result)
+{
     for ($i = 0; $i < count($result); $i++) {
         $message = $result[$i]['mensaje'];
         $movieId = $result[$i]['id_pelicula'];
