@@ -8,8 +8,12 @@ if (isset($_POST['Comment']) and isset($_POST['UserRating'])) {
     if (CheckRating($rating) and CheckComment($comment)) {
         $MovieId = GetGlobalMovieId();
         $UserId = $_SESSION["loggedUser"]["id"];
-        $sql = 'INSERT INTO `comentarios` (`id_pelicula`, `mensaje`, `puntuacion`, `id_usuario`, `estado`) VALUES ("' . $MovieId . '", "' . $comment . '", "' . $rating . '", "' . $UserId . '","PENDIENTE");';
-        DataBasePetition($sql);
+
+        InsertPendingComment($MovieId, $comment, $rating, $UserId);
+
+        //$average = GetAverageMovieRating($MovieId);
+        //UpdateMovieRating($average, $MovieId);
+
         echo 'Comentario enviado con éxito';
     } else {
         echo '<p style="text-align: center"> Rating incorrecto o Comentario muy largo </p>';
@@ -19,6 +23,12 @@ if (isset($_POST['Comment']) and isset($_POST['UserRating'])) {
 if (isset($_POST['MessageIndex'])) {
     $index = $_POST['MessageIndex'];
     DisplayGloboComments($index, 5);
+}
+
+function InsertPendingComment($MovieId, $comment, $rating, $UserId)
+{
+    $sql = 'INSERT INTO `comentarios` (`id_pelicula`, `mensaje`, `puntuacion`, `id_usuario`, `estado`) VALUES ("' . $MovieId . '", "' . $comment . '", "' . $rating . '", "' . $UserId . '","PENDIENTE");';
+    DataBasePetition($sql);
 }
 
 function CheckRating($rating)
@@ -64,7 +74,14 @@ function ShowMovieReleaseDate()
     $sql = "SELECT fecha_lanzamiento FROM peliculas WHERE id='" . $movieId . "'";
     $result = DataBasePetition($sql);
     $releaseDate = $result[0]['fecha_lanzamiento'];
-    echo '<p> fecha estreno: ' . $releaseDate . '</p>';
+    echo '<p> fecha de estreno: ' . $releaseDate . '</p>';
+}
+
+function ShowMovieRating()
+{
+    $movieId = GetGlobalMovieId();
+    $rating = GetAverageMovieRating($movieId);
+    echo '<p style="text-aling:center; color:indigo;">puntuación: ' . $rating . '/5</p>';
 }
 
 function ShowResume()

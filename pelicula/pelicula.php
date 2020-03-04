@@ -21,6 +21,7 @@ require_once 'peliculaAux.php';
 ShowMovieTitile(); // es un h1
 ShowMoviePoster(); // es simplemente una imagen
 ShowMovieReleaseDate(); // es una etiqueta <p> mostrando la fecha de estreno
+ShowMovieRating(); // puntuacion global de la pelicula
 ?>
       </div>
       <div class="infopeli">
