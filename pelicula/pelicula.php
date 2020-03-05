@@ -1,6 +1,7 @@
 <?php
 require_once 'peliculaAux.php';
 require_once '../SessionTasks.php';
+require_once '../header.php';
 
 ?>
 
@@ -15,14 +16,9 @@ require_once '../SessionTasks.php';
     <title>inserte nombre de peli</title>
   </head>
   <body>
-  <header>
-      <nav>
-      <a style="margin:0 50%;" href="../index.php">Volver a Inicio</a>
-      </nav>
-      <?php
-Greets();
+<?php
+Display_header('../index.php');
 ?>
-      </header>
     <main>
       <div class="poster">
       <?php

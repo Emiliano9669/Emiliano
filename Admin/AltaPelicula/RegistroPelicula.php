@@ -2,6 +2,7 @@
 session_start();
 require_once 'RegistroPeliculaAux.php';
 require_once '../../SessionTasks.php';
+require_once '../../header.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,14 +13,9 @@ require_once '../../SessionTasks.php';
     <link rel="stylesheet" href="ReigstroPelicula.css" />
   </head>
   <body>
-  <header>
-      <nav>
-      <a href="../../index.php" style="margin:0 50%;">Volver a Inicio</a>
-      </nav>
-      <?php
-Greets();
+  <?php
+Display_header('../../index.php');
 ?>
-      </header>
   <?php
 ShowForm();
 ?>

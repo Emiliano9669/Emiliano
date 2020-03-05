@@ -63,9 +63,6 @@ function Get_Partial_Movie_Info($startRow, $Amount, $gender, $Letters)
 function DisplayCardMovies($startRow, $Amount, $gender, $Letters)
 {
     $movies = Get_Partial_Movie_Info($startRow, $Amount, $gender, $Letters);
-    if (count($movies) == 0) {
-        echo "No hay películas para ese género";
-    }
     for ($i = 0; $i < count($movies); $i++) {
         $movie = $movies[$i];
         $title = $movie['titulo'];

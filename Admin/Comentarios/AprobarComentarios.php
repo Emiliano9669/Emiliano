@@ -1,5 +1,6 @@
 <?php
 require_once 'AprobarComentariosAux.php';
+require_once '../../header.php';
 ?>
 
 <!DOCTYPE html>
@@ -14,14 +15,9 @@ require_once 'AprobarComentariosAux.php';
   </head>
   <body>
     <div class="contenido">
-      <header>
-      <nav>
-      <a href="../../index.php">Volver a Inicio</a>
-      </nav>
-      <?php
-Greets();
+     <?php
+Display_header('../../index.php');
 ?>
-      </header>
       <h1>Aprobación de comentarios</h1>
 
       <div class="comentariosPendientes">

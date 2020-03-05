@@ -37,7 +37,7 @@ if (isset($_SESSION["loggedUser"])) {
       </div>");
 }
 ?>
-  <p id="response"></p>
+  <p id="response" style="text-align:center;"></p>
     <script src="login.js"></script>
   </body>
 </html>

@@ -83,9 +83,9 @@ function ShowMovieRating()
     $movieId = GetGlobalMovieId();
     $rating = GetMovieRating($movieId);
     if ($rating != "0.00") {
-        echo '<p style="text-aling:center; color:indigo;">puntuación: ' . $rating . '/5</p>';
+        echo '<p style="text-aling:center; color:LIGHTSALMON;">puntuación: ' . $rating . '/5</p>';
     } else {
-        echo '<p style="text-aling:center; color:indigo;">Sin puntuación</p>';
+        echo '<p style="text-aling:center; color:LIGHTSALMON;">Sin puntuación</p>';
     }
 }
 

@@ -73,7 +73,7 @@ function ShowComment($message, $rating, $userId, $movieId)
     echo '<div class="comentario">
     <div class="info">
         <p id ="title">' . $MovieName . '</p>
-        <p style= "color: red; text-align:center;" id="alias">' . $Alias . '</p>
+        <p style= "color: coral; text-align:center;" id="alias">' . $Alias . '</p>
     </div>
     <blockquote style="margin: 8px 20px;text-align: center;">
       " ' . $message . ' "

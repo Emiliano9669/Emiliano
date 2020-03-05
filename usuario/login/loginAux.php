@@ -27,7 +27,5 @@ function DeployAccountResult($account)
         );
         $_SESSION["loggedUser"] = $loggedUser;
         echo "usuario logeado exitosamente";
-    } else {
-        echo 'email o contraseña incorrecto';
     }
 }

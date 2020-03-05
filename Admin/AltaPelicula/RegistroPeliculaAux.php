@@ -4,13 +4,14 @@ require_once '../../Parser.php';
 
 if (isset($_POST['submit'])) {
     $info = GetInformation();
-    if (InfoIsOk($info)) {
+    try {
+        InfoIsOk($info);
         SaveImage($info);
         SaveMovie($info);
         sleep(3);
         SaveActors($info);
-    } else {
-        echo '<h2 style="color:red;">No puede quedar ningun campo sin rellenar!</h2>';
+    } catch (Exception $e) {
+        echo '<h2 style="color:red;">' . $e->getMessage() . '</h2>';
     }
 }
 
@@ -23,16 +24,19 @@ function InfoIsOk($info)
     $actor2 = $info['actor2'];
     $actor3 = $info['actor3'];
     $director = $info['director'];
+    $resumen = $info['resumen'];
     if ($name == ""
         or !isset($date)
         or !isset($id_genero)
         or $actor1 == ""
         or $actor2 == ""
         or $actor3 == ""
-        or $director == "") {
-        return false;
-    } else {
-        return true;
+        or $director == ""
+        or $resumen == "") {
+        throw new Exception("Ningún campo puede ser vacío");
+    }
+    if (strpos($resumen, '"') !== false) {
+        throw new Exception('El resumen no puede contener " ');
     }
 }
 
@@ -119,7 +123,7 @@ function ShowForm()
         <label>Poster</label>
         <input type="file" name="poster">
         <label>Trailer de youtube</label>
-        <input type="text" name="linkyt">
+        <input placeholder="Opcional" type="text" name="linkyt">
         <label>Resumen</label>
         <textarea name="resumen" cols="30" rows="10"></textarea>
         <input type="submit" name="submit" value="Enviar">

@@ -14,7 +14,7 @@ function DoLogin(user, password) {
         var url = "../../index.php";
         $(location).prop("href", url);
       } else {
-        $("#response").text(response);
+        $("#response").text("datos incorrectos");
       }
     },
     error: function() {

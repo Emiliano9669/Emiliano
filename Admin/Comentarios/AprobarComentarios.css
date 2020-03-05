@@ -7,6 +7,14 @@ html {
   height: 100%;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+body {
+  background: rgb(34, 193, 195);
+  background: linear-gradient(
+    196deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(191, 45, 253, 0.8130602582830007) 100%
+  );
+}
 
 .contenido {
   display: flex;
@@ -24,6 +32,7 @@ html {
   padding: 10px;
   justify-content: space-around;
   flex-wrap: wrap;
+  background-color: whitesmoke;
 }
 
 .comentario {
@@ -35,4 +44,11 @@ html {
   justify-content: space-between;
   align-items: center;
   margin: 10px;
+  background: rgb(51, 0, 68);
+  background: linear-gradient(
+    196deg,
+    rgba(51, 0, 68, 1) 0%,
+    rgba(0, 0, 0, 0.9307073171065301) 100%
+  );
+  color: white;
 }

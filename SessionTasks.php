@@ -3,7 +3,7 @@ function Greets()
 {
     if (isset($_SESSION['loggedUser'])) {
         $user = $_SESSION['loggedUser']['alias'];
-        echo '<p style="text-align:center;"> Bienvenido: ' . $user . '</p>';
+        echo '<h3 style="text-align:center;"> Bienvenido ' . $user . '</h3>';
     }
 }
 
