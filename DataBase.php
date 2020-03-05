@@ -20,6 +20,13 @@ function GetMovieName($MovieId)
     return $MovieName;
 }
 
+function GetMovieGenderId($name)
+{
+    $sql = 'SELECT id FROM generos WHERE nombre= "' . $name . '"';
+    $result = DataBasePetition($sql);
+    return $result[0]['id'];
+}
+
 function GetAlias($userId)
 {
     $sql = 'SELECT alias FROM usuarios WHERE id = "' . $userId . '"';
@@ -56,4 +63,30 @@ function UpdateMovieRating($average, $MovieId)
 {
     $sql = 'UPDATE `peliculas` SET `puntuacion` = "' . $average . '" WHERE (`id` = "' . $MovieId . '");';
     DataBasePetition($sql);
+}
+
+function MakeGenderSelection()
+{
+    $resultList = DataBasePetition('SELECT nombre FROM generos');
+    $movieGenderList = array('Cualquiera');
+
+    for ($i = 0; $i < count($resultList); $i++) {
+        $movieGender = $resultList[$i]['nombre'];
+        $gender = array($movieGender);
+        $movieGenderList = array_merge($movieGenderList, $gender);
+    }
+    //movieGenderList ready
+    echo '<select name="genero"> ';
+    for ($i = 0; $i < count($movieGenderList); $i++) {
+        $value = $movieGenderList[$i];
+        echo "<option name='" . $value . "'>" . $value . "</option>";
+    }
+    echo '</select>';
+}
+
+function GetMovieGender($id)
+{
+    $sql = 'SELECT nombre FROM generos WHERE id= "' . $id . '"';
+    $result = DataBasePetition($sql);
+    return $result[0]['nombre'];
 }

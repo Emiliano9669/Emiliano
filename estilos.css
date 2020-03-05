@@ -8,6 +8,11 @@ p {
   margin: 0px;
 }
 
+img {
+  width: 90%;
+  height: 80%;
+}
+
 .centrar {
   text-align: center;
 }

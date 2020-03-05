@@ -3,7 +3,8 @@
 session_start();
 ?>
 <?php
-require 'indexAux.php'
+require 'indexAux.php';
+require_once 'DataBase.php';
 ?>
 
 

@@ -1,5 +1,6 @@
 <?php
 require 'DataBase.php';
+require_once 'Parser.php';
 
 if (isset($_POST['MovieNro']) and isset($_POST['Genero'])) {
     $MovieNro = $_POST['MovieNro'];
@@ -34,10 +35,11 @@ function Determine_Search_Variable()
 
 function CreateMovieCard($titulo, $genero, $puntuacion)
 {
+    $img = '<img src="Admin/AltaPelicula/imagenes/' . Clean_Title($titulo) . '.jpg" alt="generic poster">';
     echo "<div class='pelicula'>
         <h2>$titulo</h2>
-        <img src='#' alt='poster' />
-        <p>Genero: $genero </p>
+        $img
+        <p>$genero </p>
         <p>Puntuacion $puntuacion/5</p>
       </div>";
 }
@@ -64,30 +66,12 @@ function DisplayCardMovies($startRow, $Amount, $gender, $Letters)
     for ($i = 0; $i < count($movies); $i++) {
         $movie = $movies[$i];
         $title = $movie['titulo'];
-        $gender = $movie['id_genero'];
+        $gender = GetMovieGender($movie['id_genero']);
         $punctuation = $movie['puntuacion'];
         CreateMovieCard($title, $gender, $punctuation);
     }
 }
 //html
-function MakeGenderSelection()
-{
-    $resultList = DataBasePetition('SELECT nombre FROM generos');
-    $movieGenderList = array('Cualquiera');
-
-    for ($i = 0; $i < count($resultList); $i++) {
-        $movieGender = $resultList[$i]['nombre'];
-        $gender = array($movieGender);
-        $movieGenderList = array_merge($movieGenderList, $gender);
-    }
-    //movieGenderList ready
-    echo '<select> ';
-    for ($i = 0; $i < count($movieGenderList); $i++) {
-        $value = $movieGenderList[$i];
-        echo "<option value='" . $value . "'>" . $value . "</option>";
-    }
-    echo '</select>';
-}
 
 function MakeAdminTools()
 {

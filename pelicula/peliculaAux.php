@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../DataBase.php';
+require_once '../Parser.php';
 
 if (isset($_POST['Comment']) and isset($_POST['UserRating'])) {
     $comment = $_POST['Comment'];
@@ -65,7 +66,10 @@ function ShowMovieTitile()
 
 function ShowMoviePoster()
 {
-    echo '<img src="nothing.jpg" alt="generic poster">';
+    $MovieId = GetGlobalMovieId();
+    $MovieName = GetMovieName($MovieId);
+    $MovieName = Clean_Title($MovieName);
+    echo '<img src="../Admin/AltaPelicula/imagenes/' . $MovieName . '.jpg" alt="generic poster">';
 }
 
 function ShowMovieReleaseDate()
@@ -177,13 +181,11 @@ function DisplayGloboComments($index, $offset)
 
 function ShowGloboComment($comment, $score, $releaseDate)
 {
-    $releaseDate = "dd/mm/yyyy";
     echo '<div class="globoComentario">
     <blockquote>' .
         $comment . '
     </blockquote>
     <p>' . $score . '/5</p>
-    <p>' . $releaseDate . '</p>
   </div>';
 }
 
