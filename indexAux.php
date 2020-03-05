@@ -40,7 +40,7 @@ function CreateMovieCard($titulo, $genero, $puntuacion)
         <h2>$titulo</h2>
         $img
         <p>$genero </p>
-        <p>Puntuacion $puntuacion/5</p>
+        <p>$puntuacion</p>
       </div>";
 }
 
@@ -63,24 +63,36 @@ function Get_Partial_Movie_Info($startRow, $Amount, $gender, $Letters)
 function DisplayCardMovies($startRow, $Amount, $gender, $Letters)
 {
     $movies = Get_Partial_Movie_Info($startRow, $Amount, $gender, $Letters);
+    if (count($movies) == 0) {
+        echo "No hay películas para ese género";
+    }
     for ($i = 0; $i < count($movies); $i++) {
         $movie = $movies[$i];
         $title = $movie['titulo'];
         $gender = GetMovieGender($movie['id_genero']);
-        $punctuation = $movie['puntuacion'];
+        $punctuation = CheckEmptyRating($movie['puntuacion']);
         CreateMovieCard($title, $gender, $punctuation);
     }
 }
-//html
 
+function CheckEmptyRating($rating)
+{
+    if ($rating == "0.00") {
+        return "Sin puntuación";
+    } else {
+        return "Puntuacion: " . $rating . "/5";
+    }
+}
+
+//html
 function MakeAdminTools()
 {
     if (isset($_SESSION["loggedUser"]) and $_SESSION["loggedUser"]["esAdmin"]) {
         echo '
-        <p class="centrar fondoNegro letraRoja"> Funciones de admin </p>
+        <p class="centrar fondoAdmin"> Funciones de admin </p>
         <nav>
-        <a href="Admin/Comentarios/AprobarComentarios.php" style="text-decoration:none;" class ="fondoNegro letraRoja"> Aprobar comentarios </a>
-        <a href="Admin/AltaPelicula/RegistroPelicula.php" style="text-decoration:none;" class ="fondoNegro letraRoja"> Alta de película </a>
+        <a href="Admin/Comentarios/AprobarComentarios.php" style="text-decoration:none;" class ="fondoAdmin letraAdmin"> Aprobar comentarios </a>
+        <a href="Admin/AltaPelicula/RegistroPelicula.php" style="text-decoration:none;" class ="fondoAdmin letraAdmin"> Alta de película </a>
         </nav>';
     }
 }

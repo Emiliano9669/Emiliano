@@ -12,9 +12,6 @@ if (isset($_POST['Comment']) and isset($_POST['UserRating'])) {
 
         InsertPendingComment($MovieId, $comment, $rating, $UserId);
 
-        //$average = GetAverageMovieRating($MovieId);
-        //UpdateMovieRating($average, $MovieId);
-
         echo 'Comentario enviado con éxito';
     } else {
         echo '<p style="text-align: center"> Rating incorrecto o Comentario muy largo </p>';
@@ -84,8 +81,12 @@ function ShowMovieReleaseDate()
 function ShowMovieRating()
 {
     $movieId = GetGlobalMovieId();
-    $rating = GetAverageMovieRating($movieId);
-    echo '<p style="text-aling:center; color:indigo;">puntuación: ' . $rating . '/5</p>';
+    $rating = GetMovieRating($movieId);
+    if ($rating != "0.00") {
+        echo '<p style="text-aling:center; color:indigo;">puntuación: ' . $rating . '/5</p>';
+    } else {
+        echo '<p style="text-aling:center; color:indigo;">Sin puntuación</p>';
+    }
 }
 
 function ShowResume()
@@ -185,20 +186,6 @@ function Convert_YTLink_toEmbed($link)
     $embed = str_replace($search, $replace, $link);
     return $embed;
 }
-/*
-<div class="opiniones">
-<h3>Opiniones</h3>
-<div class="comentarios">
-<?php
-DisplayGloboComments(0, 5);
-?>
-</div>
-<div class="botones">
-<button id="Back" onclick="GetCommentaries('Back')">Anterior</button>
-<button id="Next" onclick="GetCommentaries('Next')">Siguiente</button>
-</div>
-</div>
- */
 
 function Build_Comments()
 {

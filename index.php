@@ -41,8 +41,8 @@ DisplayCardMovies('0', '5', 'Cualquiera', '');
 ?>
     </main>
     <div class='nextBack'>
-      <button id="Back" onclick="GetMovies('ant');">Back</button>
-      <button id="Next" onclick="GetMovies('sig');">Next</button>
+      <button id="Back" onclick="GetMovies('ant');">Atras</button>
+      <button id="Next" onclick="GetMovies('sig');">Siguiente</button>
     </div>
     <script src="index.js"></script>
   </body>

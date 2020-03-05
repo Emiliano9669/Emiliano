@@ -51,12 +51,11 @@ function GetMovieId($name)
     return $id;
 }
 
-function GetAverageMovieRating($MovieId)
+function GetMovieRating($MovieId)
 {
-    $sql = 'SELECT AVG(puntuacion) FROM comentarios WHERE id_pelicula = "' . $MovieId . '" AND estado = "APROBADO"';
+    $sql = 'SELECT puntuacion FROM peliculas WHERE id = "' . $MovieId . '"';
     $result = DataBasePetition($sql);
-    $average = substr($result[0]['AVG(puntuacion)'], 0, 4);
-    return $average;
+    return $result[0]['puntuacion'];
 }
 
 function UpdateMovieRating($average, $MovieId)
@@ -82,6 +81,14 @@ function MakeGenderSelection()
         echo "<option name='" . $value . "'>" . $value . "</option>";
     }
     echo '</select>';
+}
+
+function GetAverageMovieRating($MovieId)
+{
+    $sql = 'SELECT AVG(puntuacion) FROM comentarios WHERE id_pelicula = "' . $MovieId . '" AND estado = "APROBADO"';
+    $result = DataBasePetition($sql);
+    $average = substr($result[0]['AVG(puntuacion)'], 0, 4);
+    return $average;
 }
 
 function GetMovieGender($id)
