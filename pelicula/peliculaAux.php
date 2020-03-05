@@ -134,6 +134,25 @@ function GetDirector($movieId)
     return $Director;
 }
 
+function Show_Trailer()
+{
+    if (HasTrailer()) {
+        echo '<div class="video">
+      <h2>Trailer</h2>';
+
+        ShowIframe();
+        echo '</div>';
+    }
+}
+
+function HasTrailer()
+{
+    $movieId = GetGlobalMovieId();
+    $sql = "SELECT youtube_trailer FROM peliculas WHERE id = '" . $movieId . "'";
+    $result = DataBasePetition($sql);
+    return $result[0]['youtube_trailer'] != "";
+}
+
 function ShowIframe()
 {
     //https://www.youtube.com/watch?v=0hMdQAjy43A
@@ -166,17 +185,74 @@ function Convert_YTLink_toEmbed($link)
     $embed = str_replace($search, $replace, $link);
     return $embed;
 }
+/*
+<div class="opiniones">
+<h3>Opiniones</h3>
+<div class="comentarios">
+<?php
+DisplayGloboComments(0, 5);
+?>
+</div>
+<div class="botones">
+<button id="Back" onclick="GetCommentaries('Back')">Anterior</button>
+<button id="Next" onclick="GetCommentaries('Next')">Siguiente</button>
+</div>
+</div>
+ */
+
+function Build_Comments()
+{
+    if (Is_Commented()) {
+        Show_Top_Comment_Section();
+        DisplayGloboComments(0, 5);
+        Show_Bot_Comment_Section();
+    }
+}
 
 function DisplayGloboComments($index, $offset)
 {
     $MovieId = GetGlobalMovieId();
     $sql = "SELECT mensaje,puntuacion FROM comentarios WHERE id_pelicula ='" . $MovieId . "' AND estado = 'APROBADO' LIMIT " . $index . "," . $offset;
     $result = DataBasePetition($sql);
-    for ($i = 0; $i < count($result); $i++) {
-        $comment = $result[$i]['mensaje'];
-        $score = $result[$i]['puntuacion'];
-        ShowGloboComment($comment, $score, 'ads');
+    if (isset($result)) {
+        for ($i = 0; $i < count($result); $i++) {
+            $comment = $result[$i]['mensaje'];
+            $score = $result[$i]['puntuacion'];
+            ShowGloboComment($comment, $score, 'ads');
+        }
+    } else {
+        return false;
     }
+}
+
+function Is_Commented()
+{
+    $MovieId = GetGlobalMovieId();
+    $sql = "SELECT mensaje,puntuacion FROM comentarios WHERE id_pelicula ='" . $MovieId . "' AND estado = 'APROBADO'";
+    $result = DataBasePetition($sql);
+    return count($result) != 0;
+}
+
+function Show_Top_Comment_Section()
+{
+    $top = '<div class="opiniones">
+    <h3>Opiniones</h3>
+    <div class="comentarios">';
+    echo $top;
+}
+
+function Show_Bot_Comment_Section()
+{
+    $back = '"Back"';
+    $next = '"Next"';
+    $bot = '</div>
+<div class="botones">
+<button id="Back" onclick="GetCommentaries(' . $back . ')">Anterior</button>
+<button id="Next" onclick="GetCommentaries(' . $next . ')">Siguiente</button>
+</div>
+</div>';
+
+    echo $bot;
 }
 
 function ShowGloboComment($comment, $score, $releaseDate)

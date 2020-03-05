@@ -17,6 +17,9 @@ require_once 'loginAux.php';
     <title>Login</title>
   </head>
   <body>
+  <nav>
+      <a style="margin:0 50%;" href="../../index.php">Volver a Inicio</a>
+      </nav>
   <?php
 //codigo del profesor modificado
 session_start();
@@ -25,10 +28,13 @@ if (isset($_SESSION["loggedUser"])) {
     echo ('<li>Hola ' . $usuario["alias"] . ' <a href="#">Salir</a></li>');
 } else {
     echo ("<div class='login'>
-    <input id='email' type='email' placeholder='Email' />
-    <input id='password' type='password' placeholder='Contraseña' />
-    <button>Ingresar</button>
-  </div>");
+          <H1> Login </H1>
+          <div>
+            <input id='email' type='email' placeholder='Email' />
+            <input id='password' type='password' placeholder='Contraseña' />
+            <button>Ingresar</button>
+          </div>
+      </div>");
 }
 ?>
   <p id="response"></p>

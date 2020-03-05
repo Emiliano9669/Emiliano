@@ -45,24 +45,10 @@ ShowCredits();
         </div>
       </div>
     </main>
-    <div class="video">
-      <h2>Trailer</h2>
-      <?php
-ShowIframe();
+    <?php
+Show_Trailer();
+Build_Comments();
 ?>
-    </div>
-    <div class="opiniones">
-      <h3>Opiniones</h3>
-      <div class="comentarios">
-        <?php
-DisplayGloboComments(0, 5);
-?>
-      </div>
-      <div class="botones">
-        <button id="Back" onclick="GetCommentaries('Back')">Anterior</button>
-        <button id="Next" onclick="GetCommentaries('Next')">Siguiente</button>
-      </div>
-    </div>
     <!-- se termina la clase opiniones-->
     <?php
 Show_comment_writer();

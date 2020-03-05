@@ -1,0 +1,13 @@
+.login {
+  width: max-content;
+  margin: 0 auto;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+  margin-left: 40%;
+}
+
+.login div {
+  margin-top: 50px;
+}

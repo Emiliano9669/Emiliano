@@ -8,7 +8,9 @@
     <title>Registro</title>
   </head>
   <body>
-    <header>Header comun en todas las paginass</header>
+  <nav>
+      <a style="margin:0 50%;" href="../../index.php">Volver a Inicio</a>
+      </nav>
     <div class="registro">
       <h1>Registrarse</h1>
       <form>
