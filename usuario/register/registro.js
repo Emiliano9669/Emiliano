@@ -8,7 +8,14 @@ $("#submit").click(function() {
     Alias: alias,
     Password: password
   };
+  if (password.length >= 6) {
+    Send_Data_ToServer(parametros);
+  } else {
+    alert("el password tiene que tener al menos 6 caracteres!");
+  }
+});
 
+function Send_Data_ToServer(parametros) {
   $.ajax({
     data: parametros,
     url: "registroAux.php",
@@ -24,4 +31,4 @@ $("#submit").click(function() {
       console.log("hubo un error en ajax");
     }
   });
-});
+}

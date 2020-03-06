@@ -28,7 +28,7 @@ header {
 }
 
 .poster {
-  width: 33%;
+  width: 28%;
   height: 550px;
   display: flex;
   flex-direction: column;
@@ -37,6 +37,8 @@ header {
   border-radius: 10px;
   background-color: black;
   color: white;
+  border-radius: 8px;
+  border: 2px solid crimson;
 }
 
 .poster img {
