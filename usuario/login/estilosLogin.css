@@ -4,8 +4,11 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-h1 {
-  margin-left: 40%;
+a {
+  margin: 0;
+}
+nav {
+  margin: 0 auto;
 }
 
 .login div {

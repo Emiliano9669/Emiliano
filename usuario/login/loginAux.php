@@ -1,8 +1,6 @@
 <?php
 require_once '../../DataBase.php';
-//Verificar usuario y contrasenia
-//hacemos un session start
-//Guardamos array de variables de consulta en $_SESSION
+
 if (isset($_POST["User"]) and isset($_POST["Password"])) {
     $inputEmail = $_POST["User"];
     $inputPassword = $_POST["Password"];

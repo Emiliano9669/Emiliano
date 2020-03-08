@@ -44,8 +44,8 @@ function ClickMovieHandler() {
       success: function(response) {
         if (response != "") {
           $("main").html(response);
-          ClickMovieHandler();
-          //direccionarse hacia la pagina de peliculas
+          ClickMovieHandler(); //asignamos el "event"
+          //direccionarse a la pagina de peliculas
           var url = "pelicula/pelicula.php";
           $(location).prop("href", url);
           console.log("redireccion..");

@@ -59,7 +59,6 @@ function Get_Partial_Movie_Info($startRow, $Amount, $gender, $Letters)
     return $resultList;
 }
 
-//html
 function DisplayCardMovies($startRow, $Amount, $gender, $Letters)
 {
     $movies = Get_Partial_Movie_Info($startRow, $Amount, $gender, $Letters);
@@ -81,7 +80,6 @@ function CheckEmptyRating($rating)
     }
 }
 
-//html
 function MakeAdminTools()
 {
     if (isset($_SESSION["loggedUser"]) and $_SESSION["loggedUser"]["esAdmin"]) {

@@ -1,6 +1,5 @@
 <?php
 
-//session_start();
 function DataBasePetition($sql)
 {
     $connectionDB = new PDO('mysql:host=localhost; dbname=cine', 'root', '1032');
@@ -66,6 +65,18 @@ function UpdateMovieRating($average, $MovieId)
 
 function MakeGenderSelection()
 {
+
+    $movieGenderList = GetMovideGenderList();
+    echo '<select name="genero"> ';
+    for ($i = 0; $i < count($movieGenderList); $i++) {
+        $value = $movieGenderList[$i];
+        echo "<option name='" . $value . "'>" . $value . "</option>";
+    }
+    echo '</select>';
+}
+
+function GetMovideGenderList()
+{
     $resultList = DataBasePetition('SELECT nombre FROM generos');
     $movieGenderList = array('Cualquiera');
 
@@ -74,13 +85,7 @@ function MakeGenderSelection()
         $gender = array($movieGender);
         $movieGenderList = array_merge($movieGenderList, $gender);
     }
-    //movieGenderList ready
-    echo '<select name="genero"> ';
-    for ($i = 0; $i < count($movieGenderList); $i++) {
-        $value = $movieGenderList[$i];
-        echo "<option name='" . $value . "'>" . $value . "</option>";
-    }
-    echo '</select>';
+    return $movieGenderList;
 }
 
 function GetAverageMovieRating($MovieId)

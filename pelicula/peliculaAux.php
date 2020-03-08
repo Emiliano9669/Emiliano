@@ -102,7 +102,7 @@ function ShowCredits()
 {
     $movieId = GetGlobalMovieId();
     $Director = GetDirector($movieId);
-    $Actors = GetActors($movieId); // devuelve un array
+    $Actors = GetActors($movieId);
     echo '<p> Director: ' . $Director . '</p> <p> Actors: ' . WriteArray($Actors) . '</p>';
 }
 
@@ -156,8 +156,6 @@ function HasTrailer()
 
 function ShowIframe()
 {
-    //https://www.youtube.com/watch?v=0hMdQAjy43A
-    //https://www.youtube.com/embed/0hMdQAjy43A
     $movieId = GetGlobalMovieId();
     $sql = "SELECT youtube_trailer FROM peliculas WHERE id = '" . $movieId . "'";
     $result = DataBasePetition($sql);
@@ -167,7 +165,7 @@ function ShowIframe()
 
 function BuildIframe($youtubelink)
 {
-    $linkytEmbed = Convert_YTLink_toEmbed($youtubelink); //Embed youtube link
+    $linkytEmbed = Convert_YTLink_toEmbed($youtubelink);
     $Iframe = '<iframe
     width="560"
     height="315"
@@ -176,7 +174,6 @@ function BuildIframe($youtubelink)
     allowfullscreen
   ></iframe>';
     return $Iframe;
-    //allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 }
 
 function Convert_YTLink_toEmbed($link)
@@ -230,12 +227,12 @@ function Show_Top_Comment_Section()
 
 function Show_Bot_Comment_Section()
 {
-    $back = '"Back"';
-    $next = '"Next"';
+    $back = 'GetComments_Back();';
+    $next = 'GetComments_Next();';
     $bot = '</div>
 <div class="botones">
-<button id="Back" onclick="GetCommentaries(' . $back . ')">Anterior</button>
-<button id="Next" onclick="GetCommentaries(' . $next . ')">Siguiente</button>
+<button id="Back" onclick="GetComments_Back();">Anterior</button>
+<button id="Next" onclick="GetComments_Next();">Siguiente</button>
 </div>
 </div>';
 

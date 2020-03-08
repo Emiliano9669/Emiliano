@@ -1,5 +1,5 @@
+console.log("script cargado");
 var CommentIndex = 0;
-
 $("#submit").click(function() {
   var comment = $("#comment").val();
   var rating = $("#userRating").val();
@@ -60,6 +60,14 @@ function GetCommentaries(direccion) {
       }
     }
   });
+}
+
+function GetComments_Next() {
+  GetCommentaries("Next");
+}
+
+function GetComments_Back() {
+  GetCommentaries("Back");
 }
 
 function Check_IfNeedTo_Hide_BackButton() {

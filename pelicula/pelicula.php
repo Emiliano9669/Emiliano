@@ -13,6 +13,7 @@ require_once '../header.php';
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="estilos pelicula.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="peliculaTemplate.js"></script>
     <title>inserte nombre de peli</title>
   </head>
   <body>
@@ -22,9 +23,9 @@ Display_header('../index.php');
     <main>
       <div class="poster">
       <?php
-ShowMovieTitile(); // es un h1
-ShowMoviePoster(); // es simplemente una imagen
-ShowMovieReleaseDate(); // es una etiqueta <p> mostrando la fecha de estreno
+ShowMovieTitile(); // <h1>
+ShowMoviePoster(); // <img>
+ShowMovieReleaseDate(); // <p>
 ShowMovieRating(); // puntuacion global de la pelicula
 ?>
       </div>
@@ -45,10 +46,12 @@ ShowCredits();
 Show_Trailer();
 Build_Comments();
 ?>
+
     <!-- se termina la clase opiniones-->
     <?php
 Show_comment_writer();
 ?>
+
   </body>
-  <script src="pelicula.js"></script>
+
 </html>

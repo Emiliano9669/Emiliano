@@ -21,7 +21,6 @@ require_once 'loginAux.php';
       <a style="margin:0 50%;" href="../../index.php">Volver a Inicio</a>
       </nav>
   <?php
-//codigo del profesor modificado
 session_start();
 if (isset($_SESSION["loggedUser"])) {
     $usuario = $_SESSION["loggedUser"];
