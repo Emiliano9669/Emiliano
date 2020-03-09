@@ -40,6 +40,9 @@ header {
   border-radius: 8px;
   border: 2px solid crimson;
 }
+.resp {
+  color: red;
+}
 
 .poster img {
   width: 90%;

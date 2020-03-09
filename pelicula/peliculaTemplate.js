@@ -1,6 +1,7 @@
-console.log("script cargado");
+console.log("script PeliculaTemplate cargado");
 var CommentIndex = 0;
-$("#submit").click(function() {
+
+function SendComment() {
   var comment = $("#comment").val();
   var rating = $("#userRating").val();
   var parametros = {
@@ -13,11 +14,15 @@ $("#submit").click(function() {
     type: "post",
     success: function(response) {
       if (response != "") {
-        $(".opinar").html(response);
+        if (response.includes("Error")) {
+          $(".resp").html(response);
+        } else {
+          $(".opinar").html(response);
+        }
       }
     }
   });
-});
+}
 
 function IsRatingOk() {
   var rating = $("#userRating").val();

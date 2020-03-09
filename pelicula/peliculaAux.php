@@ -14,7 +14,7 @@ if (isset($_POST['Comment']) and isset($_POST['UserRating'])) {
 
         echo 'Comentario enviado con éxito';
     } else {
-        echo '<p style="text-align: center"> Rating incorrecto o Comentario muy largo </p>';
+        echo '<p style="text-align: center">Error: Rating incorrecto o Comentario muy largo </p>';
     }
 }
 
@@ -38,7 +38,6 @@ function CheckRating($rating)
         $rating == "5")) {
         return true;
     } else {
-        echo "revise el rating!" . $rating;
         return false;
     }
 }
@@ -196,7 +195,7 @@ function Build_Comments()
 function DisplayGloboComments($index, $offset)
 {
     $MovieId = GetGlobalMovieId();
-    $sql = "SELECT mensaje,puntuacion FROM comentarios WHERE id_pelicula ='" . $MovieId . "' AND estado = 'APROBADO' LIMIT " . $index . "," . $offset;
+    $sql = "SELECT id,mensaje,puntuacion FROM comentarios WHERE id_pelicula ='" . $MovieId . "' AND estado = 'APROBADO' ORDER BY id DESC LIMIT " . $index . "," . $offset;
     $result = DataBasePetition($sql);
     if (isset($result)) {
         for ($i = 0; $i < count($result); $i++) {
@@ -254,12 +253,17 @@ function Show_comment_writer()
     if (isset($_SESSION["loggedUser"])) {
         $userId = $_SESSION["loggedUser"]["id"];
         if (!User_Commented($userId, GetGlobalMovieId())) {
-            echo '<div class="opinar">
+            echo '
+            <div class="resp">
+            </div>
+            <div class="opinar">
             <p style="text-align: center"> Publica tu comentario sobre esta película </p>
             <textarea name="" id="comment" cols="30" rows="10"></textarea>
             <p> <input type="text" id="userRating" style="width:10px;"> / 5 </p>
-            <button id="submit">Enviar Opinion</button>
-            </div>';
+            <button id="submit" onclick="SendComment();">Enviar Opinion</button>
+            </div>
+            ';
+
         } else {
             echo '<p style="text-align: center;  padding: 20px;"> Ya has comentado sobre esta película </p>';
         }

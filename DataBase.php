@@ -1,8 +1,9 @@
 <?php
+require_once 'configuracion.php';
 
 function DataBasePetition($sql)
 {
-    $connectionDB = new PDO('mysql:host=localhost; dbname=cine', 'root', '1032');
+    $connectionDB = new PDO(DSN, UserSQL, PasswordSQL);
     $resultado = $connectionDB->query($sql);
     if ($resultado) {
         $retorno = $resultado->fetchAll(PDO::FETCH_ASSOC);
